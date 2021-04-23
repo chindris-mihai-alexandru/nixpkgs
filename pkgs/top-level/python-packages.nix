@@ -5801,6 +5801,8 @@ in {
 
   omnilogic = callPackage ../development/python-modules/omnilogic { };
 
+  omrdatasettools = callPackage ../development/python-modules/omrdatasettools { };
+
   ondilo = callPackage ../development/python-modules/ondilo { };
 
   onetimepass = callPackage ../development/python-modules/onetimepass { };
