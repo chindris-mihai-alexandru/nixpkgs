@@ -3202,6 +3202,8 @@ in {
 
   fuzzywuzzy = callPackage ../development/python-modules/fuzzywuzzy { };
 
+  fvcore = callPackage ../development/python-modules/fvcore { };
+
   fx2 = callPackage ../development/python-modules/fx2 { };
 
   galario = toPythonModule (pkgs.galario.override {
