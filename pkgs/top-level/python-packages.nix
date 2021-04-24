@@ -2171,6 +2171,8 @@ in {
 
   detect-secrets = callPackage ../development/python-modules/detect-secrets { };
 
+  detectron2 = callPackage ../development/python-modules/detectron2 { };
+
   devolo-home-control-api = callPackage ../development/python-modules/devolo-home-control-api { };
 
   devolo-plc-api = callPackage ../development/python-modules/devolo-plc-api { };
