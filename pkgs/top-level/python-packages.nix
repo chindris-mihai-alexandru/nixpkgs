@@ -3929,6 +3929,8 @@ in {
 
   hydra-check = callPackage ../development/python-modules/hydra-check { };
 
+  hydra-core = callPackage ../development/python-modules/hydra-core { };
+
   hydrawiser = callPackage ../development/python-modules/hydrawiser { };
 
   hypchat = callPackage ../development/python-modules/hypchat { };
