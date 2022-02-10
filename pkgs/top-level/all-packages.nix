@@ -482,12 +482,12 @@ with pkgs;
 
   fetchbzr = callPackage ../build-support/fetchbzr { };
 
-  fetchcvs = if stdenv.buildPlatform != stdenv.hostPlatform
+  fetchcvs = makeOverridable (if stdenv.buildPlatform != stdenv.hostPlatform
     # hack around splicing being crummy with things that (correctly) don't eval.
     then buildPackages.fetchcvs
-    else callPackage ../build-support/fetchcvs { };
+    else callPackage ../build-support/fetchcvs { });
 
-  fetchdarcs = callPackage ../build-support/fetchdarcs { };
+  fetchdarcs = makeOverridable (callPackage ../build-support/fetchdarcs { });
 
   fetchdocker = callPackage ../build-support/fetchdocker { };
 
@@ -497,15 +497,15 @@ with pkgs;
 
   fetchfossil = callPackage ../build-support/fetchfossil { };
 
-  fetchgit = (callPackage ../build-support/fetchgit {
+  fetchgit = makeOverridable ((callPackage ../build-support/fetchgit {
     git = buildPackages.gitMinimal;
     cacert = buildPackages.cacert;
     git-lfs = buildPackages.git-lfs;
   }) // { # fetchgit is a function, so we use // instead of passthru.
     tests = pkgs.tests.fetchgit;
-  };
+  });
 
-  fetchgitLocal = callPackage ../build-support/fetchgitlocal { };
+  fetchgitLocal = makeOverridable (callPackage ../build-support/fetchgitlocal { });
 
   fetchmtn = callPackage ../build-support/fetchmtn (config.fetchmtn or {});
 
@@ -639,19 +639,19 @@ with pkgs;
 
   fetchCrate = callPackage ../build-support/rust/fetchcrate.nix { };
 
-  fetchFromGitea = callPackage ../build-support/fetchgitea { };
+  fetchFromGitea = makeOverridable (callPackage ../build-support/fetchgitea { });
 
-  fetchFromGitHub = callPackage ../build-support/fetchgithub {};
+  fetchFromGitHub = makeOverridable (callPackage ../build-support/fetchgithub {});
 
-  fetchFromBitbucket = callPackage ../build-support/fetchbitbucket {};
+  fetchFromBitbucket = makeOverridable (callPackage ../build-support/fetchbitbucket {});
 
-  fetchFromSavannah = callPackage ../build-support/fetchsavannah {};
+  fetchFromSavannah = makeOverridable (callPackage ../build-support/fetchsavannah {});
 
-  fetchFromSourcehut = callPackage ../build-support/fetchsourcehut { };
+  fetchFromSourcehut = makeOverridable (callPackage ../build-support/fetchsourcehut { });
 
-  fetchFromGitLab = callPackage ../build-support/fetchgitlab {};
+  fetchFromGitLab = makeOverridable (callPackage ../build-support/fetchgitlab {});
 
-  fetchFromGitiles = callPackage ../build-support/fetchgitiles {};
+  fetchFromGitiles = makeOverridable (callPackage ../build-support/fetchgitiles {});
 
   fetchFromRepoOrCz = callPackage ../build-support/fetchrepoorcz {};
 
